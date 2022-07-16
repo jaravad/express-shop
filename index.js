@@ -1,26 +1,40 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 
-// Create express app
 const app = express();
 
-// Define a middleware
-app.use((req, res, next) => {
-  console.log('In the middleware');
-  // This function must be executed to continue with the next middleware
-  next();
+// Include body parser middleware
+app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use('/add-product', (req, res, next) => {
+  console.log('Add product middleware');
+  res.send(
+    `
+    <html>
+      <head>
+        <title>Add product</title>
+      </head>
+      <body>
+        <form action="/product" method="POST">
+          <input type="text" name="title"/>
+          <button type="submit">Add product</button>
+        </form>
+      </body>
+    </html>`.trim()
+  );
 });
 
-// Define another middleware
-app.use((req, res, next) => {
-  console.log('In another middleware');
+// Filter by request method
+app.post('/product', (req, res, next) => {
+  console.log('Product middleware');
+  console.log(req.body);
+  // redirect to '/'
+  res.redirect('/');
+});
+
+app.use('/', (req, res, next) => {
+  console.log('Home middleware');
   res.send('<h1>Hello from Express!</h1>');
 });
-
-/**
- * app.listen(3000) executes the following two statements behind the scenes
- *
- * const server = http.createServer(app);
- * server.listen(3000);
- */
 
 app.listen(3000);
