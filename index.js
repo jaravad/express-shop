@@ -9,6 +9,11 @@ const shopRoutes = require('./routes/shop');
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
+/**
+ * express.static is a middleware to serve static files
+ * Several folders can be specified with express.static
+ * */
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/admin', adminRoutes);
 app.use(shopRoutes);
