@@ -1,11 +1,12 @@
 .product-form {
   max-width: 90%;
   width: 20rem;
+  padding: 2rem;
   margin: auto;
 }
 
 .form-control {
-  margin: 1rem 0;
+  margin-bottom: 1rem;
 }
 
 .form-control input,
@@ -14,9 +15,15 @@
   width: 100%;
 }
 
+.form-control label {
+  margin-bottom: 0.25rem;
+}
+
 .form-control input {
   border: 1px solid rebeccapurple;
   font-family: inherit;
+  color: inherit;
+  padding: 0.5rem;
   border-radius: 2px;
 }
 
@@ -26,6 +33,7 @@ button {
   color: rebeccapurple;
   border: 1px solid rebeccapurple;
   border-radius: 3px;
+  padding: 0.25rem 0.5rem;
 }
 
 button:hover {

@@ -6,13 +6,11 @@ const rootDir = require('../util/path');
 
 const router = express.Router();
 
+const adminData = require('./admin');
+
 router.get('/', (req, res) => {
-  /**
-   * The variable 'rootDir' contains the root directory of
-   * the node project
-   *
-   * */
-  res.sendFile(path.join(rootDir, 'views', 'shop.html'));
+  const products = adminData.products;
+  res.render('shop', { products, pageTitle: 'Shop' });
 });
 
 module.exports = router;
