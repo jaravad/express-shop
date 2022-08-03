@@ -24,7 +24,9 @@ app.use('/admin', adminRoutes);
 app.use(shopRoutes);
 
 app.use((req, res) => {
-  res.status(404).render('404', { layout: false, pageTitle: 'Not found' });
+  res
+    .status(404)
+    .render('404', { layout: false, pageTitle: 'Not found', path: '' });
 });
 
 app.listen(3000);
