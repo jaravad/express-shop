@@ -2,6 +2,7 @@ const path = require('path');
 
 const express = require('express');
 const bodyParser = require('body-parser');
+const { engine } = require('express-handlebars');
 
 const adminData = require('./routes/admin');
 const adminRoutes = adminData.routes;
@@ -14,7 +15,8 @@ const app = express();
  * By default the views location is a folder in the root
  * directory called 'views'
  * */
-app.set('view engine', 'pug');
+app.engine('hbs', engine());
+app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -24,7 +26,7 @@ app.use('/admin', adminRoutes);
 app.use(shopRoutes);
 
 app.use((req, res) => {
-  res.status(404).render('404', { pageTitle: 'Not found' });
+  res.status(404).render('404', { layout: false, pageTitle: 'Not found' });
 });
 
 app.listen(3000);
