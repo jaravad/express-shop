@@ -2,7 +2,7 @@ const path = require('path');
 
 const express = require('express');
 const bodyParser = require('body-parser');
-const { engine } = require('express-handlebars');
+const { create } = require('express-handlebars');
 
 const adminData = require('./routes/admin');
 const adminRoutes = adminData.routes;
@@ -15,7 +15,11 @@ const app = express();
  * By default the views location is a folder in the root
  * directory called 'views'
  * */
-app.engine('hbs', engine());
+const hbs = create({
+  defaultLayout: 'main-layout',
+  extname: 'hbs',
+});
+app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
 
