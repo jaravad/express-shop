@@ -9,11 +9,6 @@ const shopRoutes = require('./routes/shop');
 
 const app = express();
 
-/**
- * Specify the view engine and views location
- * By default the views location is a folder in the root
- * directory called 'views'
- * */
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
