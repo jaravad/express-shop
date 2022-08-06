@@ -1,7 +1,8 @@
 [
-  { "title": "Bread" },
+  { "title": "Plant" },
   { "title": "Cup" },
   { "title": "Glass" },
   { "title": "Wallet" },
-  { "title": "Phone" }
+  { "title": "Phone" },
+  { "title": "Watch" }
 ]
