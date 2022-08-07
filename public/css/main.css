@@ -17,7 +17,7 @@ body {
 }
 
 .main-header {
-  height: 3.5rem;
+  min-height: 3.5rem;
   background: rebeccapurple;
 }
 
@@ -32,12 +32,14 @@ body {
   padding: 0;
   list-style-type: none;
   display: flex;
+  flex-wrap: wrap;
 }
 
 .main-header__item a {
+  display: block;
   text-decoration: none;
   color: white;
-  padding: 0.5rem 2rem;
+  padding: 1rem 1.5rem;
 }
 
 .main-header__item a:hover,
