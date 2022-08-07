@@ -1,8 +1,44 @@
 [
-  { "title": "Plant" },
-  { "title": "Cup" },
-  { "title": "Glass" },
-  { "title": "Wallet" },
-  { "title": "Phone" },
-  { "title": "Watch" }
+  {
+    "title": "Plant",
+    "imageUrl": "https://unsplash.com/photos/miziNqvJx5M/download?w=640",
+    "description": "Beautiful plant.",
+    "price": 12.99
+  },
+  {
+    "title": "Cup",
+    "imageUrl": "https://unsplash.com/photos/Ha5_JcYArf0/download?w=640",
+    "description": "This is a cool cup.",
+    "price": 20.99
+  },
+  {
+    "title": "Glass",
+    "imageUrl": "https://unsplash.com/photos/-hNBS5q5klc/download?w=640",
+    "description": "This is a useful glass.",
+    "price": 10.99
+  },
+  {
+    "title": "Wallet",
+    "imageUrl": "https://unsplash.com/photos/2s9N9qHsSCI/download?w=640",
+    "description": "A high quality wallet.",
+    "price": 13.99
+  },
+  {
+    "title": "Phone",
+    "imageUrl": "https://unsplash.com/photos/0a1AxtzSmWA/download?w=640",
+    "description": "An expensive phone.",
+    "price": 999.99
+  },
+  {
+    "title": "Watch",
+    "imageUrl": "https://unsplash.com/photos/e6cGDtIOrXI/download?w=640",
+    "description": "Very precise automatic watch.",
+    "price": 299.99
+  },
+  {
+    "title": "Motorcycle",
+    "imageUrl": "https://unsplash.com/photos/0EsSjaKfZ28/download?w=640",
+    "description": "A very fast and versatile motorcycle.",
+    "price": "2999.99"
+  }
 ]

@@ -7,6 +7,12 @@
   text-align: center;
 }
 
+.product__image {
+  height: 15rem;
+  object-fit: cover;
+  object-position: center;
+}
+
 .product__price {
   text-align: center;
   color: #4d4d4d;
