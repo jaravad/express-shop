@@ -7,6 +7,19 @@ body {
   color: #212121;
 }
 
+.centered {
+  text-align: center;
+}
+
+.d-inline {
+  display: inline;
+}
+
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+
 .container {
   width: 90%;
   margin: auto;
