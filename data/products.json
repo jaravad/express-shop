@@ -3,8 +3,8 @@
     "id": "fee44ef4-3cd1-493c-b2d9-b5fcad873563",
     "title": "Plant",
     "imageUrl": "https://unsplash.com/photos/miziNqvJx5M/download?w=640",
-    "description": "Beautiful plant.",
-    "price": 12.99
+    "description": "Beautiful plant in discount kiddo.",
+    "price": "12.99"
   },
   {
     "id": "fcefb94b-262f-42af-acb2-21ef6602feac",
