@@ -1,4 +1,7 @@
 {
-  "products": [{ "id": "20c75289-c9c4-4f43-a91c-75a19059b316", "quantity": 1 }],
-  "totalPrice": 299.99
+  "products": [
+    { "id": "20c75289-c9c4-4f43-a91c-75a19059b316", "quantity": 1 },
+    { "id": "fcefb94b-262f-42af-acb2-21ef6602feac", "quantity": 2 }
+  ],
+  "totalPrice": 341.97
 }
