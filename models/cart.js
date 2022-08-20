@@ -36,7 +36,7 @@ module.exports = class Cart {
     });
   }
 
-  static deleteProducts(productId, productPrice) {
+  static deleteProduct(productId, productPrice) {
     fs.readFile(p, (err, fileContent) => {
       if (err) {
         return;
@@ -44,6 +44,9 @@ module.exports = class Cart {
       const currentCart = JSON.parse(fileContent);
       const updatedCart = { ...currentCart };
       const product = updatedCart.products.find((p) => p.id === productId);
+      if (!product) {
+        return;
+      }
       const productQuantity = product.quantity;
       updatedCart.products = updatedCart.products.filter(
         (p) => p.id !== productId

@@ -52,7 +52,7 @@ module.exports = class Product {
       const filteredProducts = products.filter((p) => p.id !== productId);
       fs.writeFile(p, JSON.stringify(filteredProducts), (err) => {
         if (!err) {
-          return Cart.deleteProducts(productId, product.price);
+          return Cart.deleteProduct(productId, product.price);
         }
         console.error(err);
       });
@@ -66,7 +66,7 @@ module.exports = class Product {
   static getById(id, callback, errorCallback) {
     getProductsFromFile((products) => {
       const product = products.find((p) => p.id === id);
-      product ? callback(product) : errorCallback();
+      product ? callback(product) : errorCallback && errorCallback();
     });
   }
 };
