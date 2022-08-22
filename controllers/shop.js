@@ -15,9 +15,8 @@ exports.getProducts = (req, res) => {
 
 exports.getProduct = (req, res, next) => {
   const { productId } = req.params;
-  Product.getById(productId)
-    .then(([rows]) => {
-      const product = rows[0];
+  Product.findByPk(productId)
+    .then((product) => {
       res.render('shop/product-detail', {
         product,
         path: '/products',
@@ -28,6 +27,12 @@ exports.getProduct = (req, res, next) => {
       console.log(err);
       next();
     });
+  /** Other way to find a product with findAll:
+   * - findAll always returns an array, even if the result is only one element
+   *
+   * Product.findAll({where: {id: productId}})
+   * .then(products => console.log(products[0]))
+   *  */
 };
 
 exports.getIndex = (req, res) => {

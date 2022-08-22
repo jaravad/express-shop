@@ -22,7 +22,6 @@ app.use(shopRoutes);
 
 app.use(errorController.get404);
 
-// With sync function tables will be fetched or created if they don't exist.
 sequelize
   .sync()
   .then(() => {
