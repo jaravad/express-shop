@@ -35,46 +35,48 @@ exports.postAddProduct = (req, res) => {
     .catch((err) => console.log(err));
 };
 
-exports.getEditProduct = (req, res, next) => {
-  const editMode = req.query.edit === 'true';
-  if (!editMode) {
-    return res.redirect('/');
+exports.getEditProduct = async (req, res, next) => {
+  try {
+    const editMode = req.query.edit === 'true';
+    if (!editMode) {
+      return res.redirect('/');
+    }
+    const { productId } = req.params;
+    const product = await Product.findByPk(productId);
+    if (!product) {
+      return res.redirect('/');
+    }
+    res.render('admin/edit-product', {
+      pageTitle: 'Edit product',
+      path: '/admin/edit-product',
+      editing: editMode,
+      product,
+    });
+  } catch (err) {
+    console.log(err);
+    next();
   }
-  const { productId } = req.params;
-  Product.getById(
-    productId,
-    (product) => {
-      if (!product) {
-        return res.redirect('/');
-      }
-      res.render('admin/edit-product', {
-        pageTitle: 'Edit product',
-        path: '/admin/edit-product',
-        editing: editMode,
-        product,
-      });
-    },
-    next
-  );
 };
 
-exports.postEditProduct = (req, res) => {
-  const { productId } = req.body;
-  const {
-    title: updatedTitle,
-    price: updatedPrice,
-    imageUrl: updatedImageUrl,
-    description: updatedDescription,
-  } = req.body;
-  const updatedProduct = new Product(
-    productId,
-    updatedTitle,
-    updatedImageUrl,
-    updatedDescription,
-    parseFloat(updatedPrice)
-  );
-  updatedProduct.save();
-  res.redirect('/admin/products');
+exports.postEditProduct = async (req, res) => {
+  try {
+    const { productId } = req.body;
+    const {
+      title: updatedTitle,
+      price: updatedPrice,
+      imageUrl: updatedImageUrl,
+      description: updatedDescription,
+    } = req.body;
+    const product = await Product.findByPk(productId);
+    product.title = updatedTitle;
+    product.price = updatedPrice;
+    product.imageUrl = updatedImageUrl;
+    product.description = updatedDescription;
+    await product.save();
+    res.redirect('/admin/products');
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 exports.postDeleteProduct = (req, res) => {
