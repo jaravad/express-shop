@@ -1,13 +1,15 @@
 const Product = require('../models/product');
 
 exports.getAdminProducts = (req, res) => {
-  Product.fetchAll((products) => {
-    res.render('admin/products', {
-      products,
-      pageTitle: 'Admin products',
-      path: '/admin/products',
-    });
-  });
+  Product.findAll()
+    .then((products) => {
+      res.render('admin/products', {
+        products,
+        pageTitle: 'Admin products',
+        path: '/admin/products',
+      });
+    })
+    .catch((err) => console.log(err));
 };
 
 exports.getAddProduct = (req, res) => {
@@ -20,17 +22,15 @@ exports.getAddProduct = (req, res) => {
 
 exports.postAddProduct = (req, res) => {
   const { title, imageUrl, description, price } = req.body;
-  const product = new Product(
-    null,
+  Product.create({
     title,
+    price,
     imageUrl,
     description,
-    parseFloat(price)
-  );
-  product
-    .save()
+  })
     .then(() => {
-      res.redirect('/');
+      console.log('Product created');
+      res.redirect('/admin/products');
     })
     .catch((err) => console.log(err));
 };
