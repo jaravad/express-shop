@@ -27,8 +27,12 @@ exports.postAddProduct = (req, res) => {
     description,
     parseFloat(price)
   );
-  product.save();
-  res.redirect('/');
+  product
+    .save()
+    .then(() => {
+      res.redirect('/');
+    })
+    .catch((err) => console.log(err));
 };
 
 exports.getEditProduct = (req, res, next) => {
