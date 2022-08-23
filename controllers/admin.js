@@ -1,7 +1,8 @@
 const Product = require('../models/product');
 
 exports.getAdminProducts = (req, res) => {
-  Product.findAll()
+  req.user
+    .getProducts()
     .then((products) => {
       res.render('admin/products', {
         products,
@@ -43,7 +44,7 @@ exports.getEditProduct = async (req, res, next) => {
       return res.redirect('/');
     }
     const { productId } = req.params;
-    const product = await Product.findByPk(productId);
+    const [product] = await req.user.getProducts({ where: { id: productId } });
     if (!product) {
       return res.redirect('/');
     }
