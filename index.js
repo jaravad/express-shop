@@ -44,20 +44,21 @@ Cart.belongsTo(User);
 Cart.belongsToMany(Product, { through: CartItem });
 Product.belongsToMany(Cart, { through: CartItem });
 
-sequelize
-  .sync({ force: true })
-  .then(() => {
-    return User.findByPk(1);
-  })
-  .then((user) => {
+const launchApp = async () => {
+  try {
+    await sequelize.sync();
+    let user = await User.findByPk(1);
     if (!user) {
-      return User.create({ name: 'Jesu', email: 'jaravads@gmail.com' });
+      user = await User.create({ name: 'Jesu', email: 'jaravads@gmail.com' });
     }
-    return Promise.resolve(user);
-  })
-  .then(() => {
+    let cart = await user.getCart();
+    if (!cart) {
+      cart = await user.createCart();
+    }
     app.listen(3000);
-  })
-  .catch((err) => {
+  } catch (err) {
     console.log(err);
-  });
+  }
+};
+
+launchApp();
