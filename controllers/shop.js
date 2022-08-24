@@ -76,16 +76,16 @@ exports.postCart = async (req, res) => {
   }
 };
 
-exports.postCartDelete = (req, res, next) => {
-  const { productId } = req.body;
-  Product.getById(
-    productId,
-    (p) => {
-      Cart.deleteProduct(productId, p.price);
-      res.redirect('/cart');
-    },
-    next
-  );
+exports.postCartDelete = async (req, res, next) => {
+  try {
+    const { productId } = req.body;
+    const cart = await req.user.getCart();
+    const [product] = await cart.getProducts({ where: { id: productId } });
+    await product.cartItem.destroy();
+    res.redirect('/cart');
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 exports.getOrders = (req, res) => {
