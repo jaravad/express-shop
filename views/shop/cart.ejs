@@ -24,6 +24,9 @@
         </div>
         <hr class="cart__product-divider"/>
       <%}%>
+      <form action="/create-order" method="POST">
+        <button class="cart__order-button" type="submit">Order now!</button>
+      </form>
     <%}else{%>
       <h1>Cart is empty</h1>
     <%}%>

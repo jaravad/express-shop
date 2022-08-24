@@ -52,3 +52,20 @@
   margin: 0;
   margin-left: auto;
 }
+
+.cart__order-button {
+  background-color: rgba(102, 51, 153, 0.9);
+  padding: 0.7rem 1rem;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  font-family: inherit;
+  width: 100%;
+  transition: background-color 200ms ease;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.cart__order-button:hover {
+  background-color: rgba(102, 51, 153, 1);
+}
