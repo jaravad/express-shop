@@ -1,21 +1,29 @@
 <%- include('../includes/head.ejs') %>
+  <link rel="stylesheet" href="/css/cart.css">
 </head>
 <body>
   <%- include('../includes/navigation.ejs') %>
-  <main class="container">
+  <main class="cart__container">
     <% if (products.length > 0) {%>
       <h1>Cart</h1>
-      <ul>
-        <%for (let product of products) {%>
-          <li>
-            <div><%=product.title%> (<%=product.quantity%>)</div>
+      <hr class="cart__product-divider"/>
+      <%for (let product of products) {%>
+        <div class="cart__product">
+          <img src="<%=product.imageUrl%>" class="cart__product-img" alt="Picture of <%=product.title%>">
+          <div>
+            <h3 class="cart__product-title"><%=product.title%></h3>
+            <small class="cart__product-quantity">
+              <strong>Quantity: </strong><%=product.cartItem.quantity%>
+            </small>
             <form action="/cart-delete-item" method="POST">
               <input type="hidden" name="productId" value="<%=product.id%>"/>
-              <button class="btn" type="submit">Delete</button>
+              <button class="cart__product-delete" type="submit">Delete</button>
             </form>
-          </li>
-        <%}%>
-      </ul>
+          </div>
+          <h3 class="cart__product-price">$<%=product.price * product.cartItem.quantity%></h3>
+        </div>
+        <hr class="cart__product-divider"/>
+      <%}%>
     <%}else{%>
       <h1>Cart is empty</h1>
     <%}%>
