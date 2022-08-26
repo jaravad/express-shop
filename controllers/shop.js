@@ -88,8 +88,17 @@ exports.postCartDelete = async (req, res, next) => {
   }
 };
 
-exports.getOrders = (req, res) => {
-  res.render('shop/orders', { pageTitle: 'Orders', path: '/orders' });
+exports.getOrders = async (req, res) => {
+  try {
+    const orders = await req.user.getOrders({ include: ['products'] });
+    res.render('shop/orders', {
+      pageTitle: 'Orders',
+      path: '/orders',
+      orders,
+    });
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 exports.postOrder = async (req, res) => {

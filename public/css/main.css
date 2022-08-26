@@ -121,6 +121,12 @@ a.btn {
   color: white;
 }
 
+.divider {
+  border: none;
+  height: 1px;
+  background-color: #c2c5cc;
+}
+
 @media (min-width: 500px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);

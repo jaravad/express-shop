@@ -4,5 +4,24 @@
   <%- include('../includes/navigation.ejs') %>
   <main class="container">
     <h1>Orders</h1>
+    <%if (orders.length > 0){%>
+      <ul>
+        <%orders.forEach(order => {%>
+          <li>
+            <h3>Order <%=order.id%></h3>
+            <ul>
+              <%order.products.forEach(product => {%>
+                <li>
+                  <%=product.title%> (<%=product.orderItem.quantity%>)
+                </li>
+              <%})%>
+            </ul>
+            <hr class="divider"/>
+          </li>
+        <%})%>
+      </ul>
+    <%}else{%>
+      <h1>No orders</h1>
+    <%}%>
   </main> 
 <%- include('../includes/end.ejs') %> 
